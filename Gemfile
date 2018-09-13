@@ -2,8 +2,22 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
+
+# Allows Cross Origin Resource Sharing
 gem 'rack-cors'
+
+# Rack Middleware to protect against bad clients and attacks
 gem 'rack-attack'
+
+# Encrypts user password in local Database
+gem 'bcrypt'
+
+# JASON WEB TOKENS
+gem 'jwt'
+
+# Helper that facilitates the connection between the controller and the model
+gem 'simple_command'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'

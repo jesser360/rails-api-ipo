@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails API for IPO mobile and desktop apps
 
-Things you may want to cover:
+Security Features:
 
-* Ruby version
+* Rack CORS (Cross Origin Resource Sharing) to allow http requests from different origins
 
-* System dependencies
+* Rack attack - Rack Middleware to protect against bad clients and attacks
 
-* Configuration
+* API key assigned to each user for extra layer of authentication
 
-* Database creation
+* CSRF (Cross Site Request Forgery) Protection
 
-* Database initialization
+* Token-based authentication (JSON Web Tokens)
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+Coming soon *
+* Two factor Authentication
 
-* Deployment instructions
+* AWS bucket storage for asset management
 
-* ...
+* Integration with Google Calendar API

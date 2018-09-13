@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-
+  has_secure_password
+  has_many :artists
   # Assign an API key on create
   before_create do |user|
     user.api_key = user.generate_api_key
@@ -12,5 +13,5 @@ class User < ApplicationRecord
       break token unless User.exists?(api_key: token)
     end
   end
-  
+
 end
