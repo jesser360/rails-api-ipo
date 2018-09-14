@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users
       post 'authenticate', to: 'authentication#authenticate'
+      post 'register', to: 'authentication#register'
 
       resources :tasks, only: [:index, :create, :destroy, :update]
       get 'tasks/artist/:artist_id', :controller => 'tasks', :action => 'customIndex'
