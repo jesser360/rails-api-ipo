@@ -5,13 +5,8 @@ class Api::V1::AuthenticationController < ApplicationController
  def register
    @user = User.create(user_params)
   if @user.save
-    command = AuthenticateUser.call(params[:email], params[:password])
-
-    if command.success?
-      render json: { auth_token: command.result }
-    else
-      render json: { error: command.errors }, status: :unauthorized
-    end
+   response = { message: 'User created successfully'}
+   render json: response, status: :created
   else
    render json: @user.errors, status: :bad
   end
