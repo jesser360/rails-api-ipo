@@ -49,6 +49,11 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
+group :production do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'pg'
+end
+
 group :development do
 
   # Use RSpec for specs
