@@ -1,6 +1,6 @@
 class Api::V1::AuthenticationController < ApplicationController
  skip_before_action :authenticate_request
-
+ require 'json_web_token'
 
  def register
    @user = User.create(user_params)
