@@ -4,7 +4,9 @@ class ApplicationController < ActionController::API
    # Add a before_action to authenticate all requests.
    # Move this to subclassed controllers if you only
    # want to authenticate certain methods.
-   before_action :authenticate_request
+   
+   # THIS IS WHERE WE AUTH REQUEST WITH JWT
+   # before_action :authenticate_request
     attr_reader :current_user
 
     private

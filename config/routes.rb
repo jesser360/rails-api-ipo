@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users
       post 'authenticate', to: 'authentication#authenticate'
+      get '/auth0Authenticate', to: 'authentication#auth0Authenticate'
       post 'register', to: 'authentication#register'
 
       resources :tasks, only: [:index, :create, :destroy, :update]
