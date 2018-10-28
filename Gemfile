@@ -18,6 +18,7 @@ gem 'jwt'
 # Helper that facilitates the connection between the controller and the model
 gem 'simple_command'
 
+gem 'docusign_rest'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'

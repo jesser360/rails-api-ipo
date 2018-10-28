@@ -10,6 +10,8 @@ Rails.application.routes.draw do
       resources :tasks, only: [:index, :create, :destroy, :update]
       get 'tasks/artist/:artist_id', :controller => 'tasks', :action => 'customIndex'
 
+      post '/docusign', to: 'docusign#create'
+
       resources :artists, only: [:index, :create, :destroy, :update, :show]
 
 
