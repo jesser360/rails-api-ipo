@@ -16,8 +16,9 @@ class ArtistsController < ApplicationController
   # POST /artists
   def create
     @artist = Artist.new(artist_params)
-    @user = User.find_by_id(artist_params[:user_id])
-    @artist.user = @user
+    puts artist_params
+    puts 'ARTIST PARAMS'
+
     if @artist.save
       render json: @artist, status: :created, location: @artist
     else
@@ -49,6 +50,6 @@ class ArtistsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def artist_params
-      params.require(:artist).permit(:name, :bio, :hometown.:user_id)
+      params.require(:artist).permit(:name, :bio, :hometown, :user_id)
     end
 end

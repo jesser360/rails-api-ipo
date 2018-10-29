@@ -27,7 +27,6 @@ class Api::V1::ArtistsController < ApplicationController
   # POST /artists.json
   def create
     @artist = Artist.create(artist_params)
-    @artist.user = current_user
     @artist.save
     render json: @artist
   end
@@ -54,6 +53,6 @@ class Api::V1::ArtistsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def artist_params
-      params.require(:artist).permit(:name, :bio, :hometown, :avatar)
+      params.require(:artist).permit(:name, :bio, :hometown, :user_id)
     end
 end
