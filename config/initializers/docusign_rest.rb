@@ -9,6 +9,6 @@ DocusignRest.configure do |config|
   config.password       = Rails.application.credentials.docusign[:password]
   config.integrator_key = 'ec8c3930-db3c-4b8e-9e9d-3f2f0b5ce109'
   config.account_id     = '6945698'
-  config.endpoint       = 'https://www.docusign.net/restapi'
+  config.endpoint       = 'https://www.docusign.net/restapi/v2/login_information'
   config.api_version    = 'v2'
 end

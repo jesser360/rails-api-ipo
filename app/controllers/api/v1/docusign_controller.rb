@@ -29,16 +29,18 @@ class Api::V1::DocusignController < ApplicationController
       },
     ],
     files: [
-      {path: '/Users/jesse/code/ipo/rails-api-ipo/pdf/ipo_video_release_agreement.pdf', name: 'test.pdf'},
+      {path: '/Users/jesse/code/ipo/rails-api-ipo/pdf/NDA.pdf', name: 'document.pdf'},
     ],
     status: 'sent'
     )
-    url = client.get_recipient_view(envelope_id: document_envelope_response['envelopeId'], name: "Joe Dimaggio", email: "joe.dimaggio@example.org", return_url: 'http://google.com')['url']
-    `open #{url}`
+    # url = client.get_recipient_view(envelope_id: document_envelope_response['envelopeId'], name: "Joe Dimaggio", email: "joe.dimaggio@example.org", return_url: 'http://google.com')['url']
+    # `open #{url}`
+    puts "ENVOOPE"
+    puts document_envelope_response
     @document = Document.create
     @document.docu_id = client.get_account_id
     @document.save!
-    puts @document
-    render json: @document
+    # render json: @document
+    return document_envelope_response
   end
 end
