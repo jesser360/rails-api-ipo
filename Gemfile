@@ -15,6 +15,11 @@ gem 'bcrypt'
 # JASON WEB TOKENS
 gem 'jwt'
 
+# create nested json renderings
+gem 'jbuilder'
+
+gem "aws-sdk-s3", require: false
+
 # Helper that facilitates the connection between the controller and the model
 gem 'simple_command'
 
