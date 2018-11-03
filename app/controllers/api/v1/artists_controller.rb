@@ -12,7 +12,7 @@ class Api::V1::ArtistsController < ApplicationController
   # GET /artists/1.json
   def show
     @artist = Artist.find_by_id(params[:id])
-    render json: @artist
+    render json: @artist.as_json(methods: :image_url)
 
   end
 
