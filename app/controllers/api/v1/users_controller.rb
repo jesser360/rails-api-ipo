@@ -4,7 +4,7 @@ class Api::V1::UsersController < ApplicationController
 
   def findUser
     @email = params[:email]
-    @user = User.where(email: @email)
+    @user = User.find_by name: @email
     puts @email
     puts "USER"
     puts @user
