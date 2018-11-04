@@ -5,7 +5,7 @@ class Api::V1::UsersController < ApplicationController
   def findUser
     @email = params[:email]
     @user = User.where(email: @email)
-    if @user
+    if @user.exists?
       puts "USER EXISTS"
       render json: @user
     else
