@@ -18,10 +18,10 @@ class Api::V1::CompaniesController < ApplicationController
   # POST /companies
   # POST /companies.json
   def create
-    @company = Company.new(company_params)
+    @company = Company.new(params)
     puts "PARAMS"
     puts params
-    puts "COPMPANY PARAMS"
+    puts "COMPANY PARAMS"
     puts company_params
     if @company.save
       render json: @company
@@ -54,7 +54,7 @@ class Api::V1::CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.fetch(:company, {}).permit(:company_name)
+      params.permit(:company_name)
     end
 
 end

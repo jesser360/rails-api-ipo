@@ -19,7 +19,10 @@ class Api::V1::GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(group_params)
-
+    puts "PARAMS"
+    puts params
+    puts "GROUP PARAMS"
+    puts group_params
     if @group.save
       render :json, @group
     else
@@ -51,6 +54,6 @@ class Api::V1::GroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.fetch(:group, {}).permit(:group_name, :group_permissions, :company_id)
+      params.permit(:group_name, :group_permissions, :company_id)
     end
 end
