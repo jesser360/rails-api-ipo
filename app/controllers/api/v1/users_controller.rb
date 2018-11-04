@@ -5,7 +5,7 @@ class Api::V1::UsersController < ApplicationController
   def findUser
     @email = user_params[:email]
     @email_string = @email.to_str
-    @user = User.find_by(email: user_params[:ema])
+    @user = User.find_by(email: user_params[:email])
     puts @email.to_str == "jesser360@gmail.com"
     puts @email.to_str
     puts type(@email)
@@ -65,6 +65,6 @@ class Api::V1::UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.fetch(:user,{}).permit(:name, :user_permissions, :email, :password_digest,:group_id)
+      params.require(:user).permit(:name, :user_permissions, :email, :password_digest,:group_id)
     end
 end
