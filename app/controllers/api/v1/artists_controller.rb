@@ -32,6 +32,8 @@ class Api::V1::ArtistsController < ApplicationController
     @artist.name = artist_params[:name]
     @artist.bio = artist_params[:bio]
     @artist.hometown = artist_params[:hometown]
+    @user = User.find_by_id(artist_params[:user_id])
+    @artist.user = @user
     # Process the file, decode the base64 encoded file
     if(params[:artist][:image] != null)
       @binary = params[:artist][:image].split(',')
