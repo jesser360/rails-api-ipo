@@ -6,8 +6,10 @@ class Api::V1::UsersController < ApplicationController
     @email = params[:email]
     @user = User.where(email: @email)
     puts @email
+    puts "USER"
     puts @user
-    if @user != nil
+    puts @user.exists?
+    if @user.exists?
       puts "USER EXISTS"
       render json: @user
     else
