@@ -4,7 +4,7 @@ class Api::V1::UsersController < ApplicationController
 
   def findUser
     @email = params[:email]
-    @user = User.find_by_email(params[:email])
+    @user = User.find_by_email("jesser360@gmail.com")
     puts @email
     puts "USER"
     puts @user
