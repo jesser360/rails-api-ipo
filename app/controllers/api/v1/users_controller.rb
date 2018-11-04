@@ -4,9 +4,12 @@ class Api::V1::UsersController < ApplicationController
 
   def findUser
     @email = params[:email]
-    if User.where(email: @email).exists?
+    @user = User.where(email: @email)
+    if @user
+      puts "USER EXISTS"
       render json: @user
     else
+      puts "NO USER"
       render :nothing => true, :status => 204
     end
   end
@@ -55,6 +58,6 @@ class Api::V1::UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.fetch(:user,{}).permit(:name, :email, :password_digest,:group_id)
+      params.fetch(:user,{}).permit(:name, :user_permissions, :email, :password_digest,:group_id)
     end
 end

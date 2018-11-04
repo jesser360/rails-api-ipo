@@ -19,10 +19,6 @@ class Api::V1::GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(group_params)
-    puts "PARAMS"
-    puts params
-    puts "GROUP PARAMS"
-    puts group_params
     if @group.save
       render :json, @group
     else
