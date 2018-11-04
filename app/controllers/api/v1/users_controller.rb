@@ -4,12 +4,12 @@ class Api::V1::UsersController < ApplicationController
 
   def findUser
     @email = params[:email]
-    @user = User.find_by name: @email
+    @user = User.find_by email: @email
     puts @email
     puts "USER"
     puts @user
     puts @user.exists?
-    if @user.exists?
+    if @user
       puts "USER EXISTS"
       render json: @user
     else
