@@ -1,6 +1,14 @@
 class Api::V1::UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
 
+
+  def findUser
+    @email = params[:email]
+    if User.where(email: @email.exists?
+      render json: @user
+    else
+      render :nothing => true, :status => 204
+  end
   # GET /users
   def index
     @users = User.all
