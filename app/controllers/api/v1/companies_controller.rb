@@ -19,7 +19,10 @@ class Api::V1::CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company = Company.new(company_params)
-
+    puts "PARAMS"
+    puts params
+    puts "COPMPANY PARAMS"
+    puts company_params
     if @company.save
       render json: @company
     else
