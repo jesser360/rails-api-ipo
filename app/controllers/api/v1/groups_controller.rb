@@ -5,20 +5,22 @@ class Api::V1::GroupsController < ApplicationController
   # GET /groups.json
   def index
     @groups = Group.all
+    render :json =>@groups
   end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @group = Group.find_by_id(params[:id])
+    render json: @group
   end
 
   # POST /groups
   # POST /groups.json
   def create
     @group = Group.new(group_params)
-
     if @group.save
-      render :show, status: :created, location: @group
+      render :json, @group
     else
       render json: @group.errors, status: :unprocessable_entity
     end
@@ -28,7 +30,7 @@ class Api::V1::GroupsController < ApplicationController
   # PATCH/PUT /groups/1.json
   def update
     if @group.update(group_params)
-      render :show, status: :ok, location: @group
+      render :json, @group
     else
       render json: @group.errors, status: :unprocessable_entity
     end
@@ -48,6 +50,6 @@ class Api::V1::GroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.fetch(:group, {})
+      params.require(:group).permit(:group_name, :group_permissions, :company_id)
     end
 end

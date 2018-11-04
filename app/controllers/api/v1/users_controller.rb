@@ -1,6 +1,16 @@
 class Api::V1::UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
 
+
+  def findUser
+    @emptyJson = ''
+    @user = User.find_by(email: params[:email])
+    if @user
+      render json: @user.as_json
+    else
+      render :json => @emptyJson
+    end
+  end
   # GET /users
   def index
     @users = User.all
@@ -46,6 +56,6 @@ class Api::V1::UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:name, :email, :password_digest)
+      params.require(:user).permit(:name, :user_permissions, :email, :password_digest,:group_id)
     end
 end
