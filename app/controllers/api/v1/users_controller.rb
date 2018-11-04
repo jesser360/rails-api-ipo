@@ -8,6 +8,7 @@ class Api::V1::UsersController < ApplicationController
       render json: @user
     else
       render :nothing => true, :status => 204
+    end
   end
   # GET /users
   def index
