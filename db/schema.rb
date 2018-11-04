@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_02_024725) do
+ActiveRecord::Schema.define(version: 2018_11_04_214248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,11 +46,26 @@ ActiveRecord::Schema.define(version: 2018_11_02_024725) do
     t.index ["user_id"], name: "index_artists_on_user_id"
   end
 
+  create_table "companies", force: :cascade do |t|
+    t.string "company_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "documents", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "docu_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "group_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "company_id"
+    t.string "group_permissions"
+    t.index ["company_id"], name: "index_groups_on_company_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -73,9 +88,14 @@ ActiveRecord::Schema.define(version: 2018_11_02_024725) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "api_key"
+    t.bigint "group_id"
+    t.string "user_permissions"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["group_id"], name: "index_users_on_group_id"
   end
 
   add_foreign_key "artists", "users"
+  add_foreign_key "groups", "companies"
   add_foreign_key "tasks", "artists"
+  add_foreign_key "users", "groups"
 end

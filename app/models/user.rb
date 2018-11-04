@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  belongs_to :group
   has_many :artists
   # Assign an API key on create
   before_create do |user|
