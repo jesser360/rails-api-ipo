@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       post 'authenticate', to: 'authentication#authenticate'
       get '/auth0Authenticate', to: 'authentication#auth0Authenticate'
       post 'register', to: 'authentication#register'
-      get '/:email/findUser', to:'users#findUser'
+      get '/users/:email/findUser', to:'users#findUser'
 
       resources :tasks, only: [:index, :create, :destroy, :update]
       get 'tasks/artist/:artist_id', :controller => 'tasks', :action => 'customIndex'
