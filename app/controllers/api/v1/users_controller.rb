@@ -3,16 +3,12 @@ class Api::V1::UsersController < ApplicationController
 
 
   def findUser
-    @email = params[:email]
-    puts @email
+    @emptyJson = ''
     @user = User.find_by(email: params[:email])
-    puts @user
     if @user
-      puts "USER EXISTS"
       render json: @user.as_json
     else
-      puts "NO USER"
-      render :nothing => true, :status => 204
+      render :json => @emptyJson
     end
   end
   # GET /users
