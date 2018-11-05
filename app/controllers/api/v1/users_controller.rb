@@ -5,7 +5,7 @@ class Api::V1::UsersController < ApplicationController
   def findUser
     @email = params[:email]
     puts @email
-    @user = User.find_by(email: "jesser360@gmail.com")
+    @user = User.find_by(email: params[:email])
     puts @user
     if @user
       puts "USER EXISTS"
