@@ -12,7 +12,7 @@ class Api::V1::CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     @company = Company.find_by_id(params[:id])
-    render json: @company
+    render json: @company.to_json( :include => [:groups])
   end
 
   # POST /companies
@@ -31,7 +31,7 @@ class Api::V1::CompaniesController < ApplicationController
   # PATCH/PUT /companies/1.json
   def update
     if @company.update(company_params)
-      render :show, status: :ok, location: @company
+      render json: @company
     else
       render json: @company.errors, status: :unprocessable_entity
     end

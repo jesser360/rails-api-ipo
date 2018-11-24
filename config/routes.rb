@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       post '/docusign', to: 'docusign#create'
 
       resources :groups, only: [:index, :create, :destroy, :update, :show]
-      resources :companies, only: [:index, :create, :destroy, :update, :show]
+      resources :companies, only: [:index, :create, :destroy, :update, :show, :put]
       resources :artists, only: [:index, :create, :destroy, :update, :show]
 
 

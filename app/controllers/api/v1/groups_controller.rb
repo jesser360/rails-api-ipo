@@ -12,15 +12,16 @@ class Api::V1::GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     @group = Group.find_by_id(params[:id])
-    render json: @group
+    render json: @group.to_json( :include => [:users])
   end
 
   # POST /groups
   # POST /groups.json
   def create
     @group = Group.new(group_params)
+
     if @group.save
-      render :json, @group
+      render json: @group
     else
       render json: @group.errors, status: :unprocessable_entity
     end
@@ -30,7 +31,7 @@ class Api::V1::GroupsController < ApplicationController
   # PATCH/PUT /groups/1.json
   def update
     if @group.update(group_params)
-      render :json, @group
+      render json: @group
     else
       render json: @group.errors, status: :unprocessable_entity
     end
